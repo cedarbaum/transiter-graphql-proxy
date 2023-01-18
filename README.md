@@ -1,14 +1,32 @@
-# Welcome to your CDK TypeScript project
+# A GraphQL proxy for communicating with the transiter service
 
-This is a blank project for CDK development with TypeScript.
+This project creates an AWS AppSync endpoint for communicating with the [transiter](https://github.com/jamespfennell/transiter) service.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+It runs in AWS and is deployed using CDK.
 
-## Useful commands
+This is the backend for [closingdoors.nyc](https://github.com/cedarbaum/closingdoors.nyc).
 
-- `npm run build` compile typescript to js
-- `npm run watch` watch for changes and compile
-- `npm run test` perform the jest unit tests
-- `cdk deploy` deploy this stack to your default AWS account/region
-- `cdk diff` compare deployed stack with current state
-- `cdk synth` emits the synthesized CloudFormation template
+## Setup
+
+This project does not setup the transiter service itself. You will need to do this first using another AWS service, such as ECS or EKS. After this is done, make note of the VPC that the transiter service is deployed in.
+
+## Building and deploying
+
+### Environment
+
+The following environment variables are used:
+
+- `TRANSITER_VPC`: the VPC ID where transiter is running. This service will also be deployed there.
+- `TRANSITER_HOST`: this is the endpoint within the VPC that the transiter service can be reached at. For exmaple, it may be an ALB endpoint connected to an ECS cluster running the container(s).
+
+### Requirements
+
+This project uses [cargo-lambda](https://github.com/cargo-lambda/cargo-lambda) to build the Lambda binary. Ensure it is installed and on your `PATH`.
+
+### Deploying
+
+For convenience, the script `build_function` will build the Lambda function binary and also compress the binary asset. After running this script, you can deploy via CDK:
+
+```
+./build_function.sh && cdk deploy
+```
