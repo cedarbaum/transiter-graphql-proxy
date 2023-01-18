@@ -1,0 +1,37 @@
+[package]
+authors = ["Sam Cedarbaum"]
+edition = "2021"
+name = "resources"
+version = "1.0.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lambda_runtime = "0.5.1"
+log = "0.4.17"
+serde = "1.0"
+serde_json = "1.0"
+simple_logger = "2.1.0"
+reqwest = {version = "0.11.11", features = ["json"]}
+tokio = {version = "1.19.2", features = ["full"]}
+prost = "0.10"
+prost-types = "0.10"
+graphql_client = "0.11.0"
+rayon = "1.5.3"
+async-std = "1.12.0"
+futures = "0.3.21"
+itertools = "0.10.3"
+lazy_static = "1.4.0"
+openssl = { version = "0.10", features = ["vendored"] }
+stopwatch = "0.0.7"
+num = "0.4"
+num-derive = "0.3"
+num-traits = "0.2"
+haversine = "0.2.1"
+
+[build-dependencies]
+prost-build = "0.10"
+
+[[bin]]
+name = "resolver"
+path = "src/main.rs"
