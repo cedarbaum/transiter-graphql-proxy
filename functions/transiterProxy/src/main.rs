@@ -331,8 +331,10 @@ fn get_trips_by_route_for_stop(
                 route: route.to_string(),
                 trips: stop_times
                     .filter(|stop_time| {
-                        stop_time.arrival.is_some()
-                            && stop_time.arrival.as_ref().unwrap().time.is_some()
+                        (stop_time.arrival.is_some()
+                            && stop_time.arrival.as_ref().unwrap().time.is_some())
+                            || (stop_time.departure.is_some()
+                                && stop_time.departure.as_ref().unwrap().time.is_some())
                     })
                     .map(|stop_time| {
                         NearbyTrainTimesNearbyTrainTimesStopRouteTripsRouteTripsTrips {
@@ -342,7 +344,7 @@ fn get_trips_by_route_for_stop(
                                 .unwrap()
                                 .time
                                 .as_ref()
-                                .unwrap()
+                                .unwrap_or_else(|| &stop_time.departure.as_ref().unwrap().time.as_ref().unwrap())
                                 .parse::<f64>()
                                 .unwrap(),
                             trip_id: stop_time.trip.as_ref().unwrap().id.clone(),
