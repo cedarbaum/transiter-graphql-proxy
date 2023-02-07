@@ -300,6 +300,7 @@ async fn get_nearby_train_times(
                 },
             })
             .filter(|stop_route_trips| stop_route_trips.route_trips.len() > 0)
+            .sorted_by(|srt1, srt2| srt1.stop.distance.partial_cmp(&srt2.stop.distance).unwrap())
             .collect::<Vec<NearbyTrainTimesNearbyTrainTimesStopRouteTrips>>(),
         updated_at: None,
     };
@@ -344,7 +345,9 @@ fn get_trips_by_route_for_stop(
                                 .unwrap()
                                 .time
                                 .as_ref()
-                                .unwrap_or_else(|| &stop_time.departure.as_ref().unwrap().time.as_ref().unwrap())
+                                .unwrap_or_else(|| {
+                                    &stop_time.departure.as_ref().unwrap().time.as_ref().unwrap()
+                                })
                                 .parse::<f64>()
                                 .unwrap(),
                             trip_id: stop_time.trip.as_ref().unwrap().id.clone(),
