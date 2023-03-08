@@ -1,6 +1,6 @@
-# A GraphQL proxy for communicating with the transiter service
+# A GraphQL proxy for communicating with the Transiter service
 
-This project creates an AWS AppSync endpoint for communicating with the [transiter](https://github.com/jamespfennell/transiter) service.
+This project creates an AWS AppSync endpoint for communicating with the [Transiter](https://github.com/jamespfennell/transiter) service.
 
 It runs in AWS and is deployed using CDK.
 
