@@ -8,7 +8,7 @@ This is the backend for [closingdoors.nyc](https://github.com/cedarbaum/closingd
 
 ## Setup
 
-This project does not setup the transiter service itself. You will need to do this first using another AWS service, such as ECS or EKS. After this is done, make note of the VPC that the transiter service is deployed in.
+This project does not setup the Transiter service itself. You will need to do this first using another AWS service, such as ECS or EKS. After this is done, make note of the VPC that the Transiter service is deployed in.
 
 ## Building and deploying
 
@@ -16,8 +16,8 @@ This project does not setup the transiter service itself. You will need to do th
 
 The following environment variables are used:
 
-- `TRANSITER_VPC`: the VPC ID where transiter is running. This service will also be deployed there.
-- `TRANSITER_HOST`: this is the endpoint within the VPC that the transiter service can be reached at. For exmaple, it may be an ALB endpoint connected to an ECS cluster running the container(s).
+- `TRANSITER_VPC`: the VPC ID where Transiter is running. This service will also be deployed there.
+- `TRANSITER_HOST`: this is the endpoint within the VPC that the Transiter service can be reached at. For exmaple, it may be an ALB endpoint connected to an ECS cluster running the container(s).
 
 ### Requirements
 
