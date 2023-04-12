@@ -4,8 +4,6 @@ This project creates an AWS AppSync endpoint for communicating with the [Transit
 
 It runs in AWS and is deployed using CDK.
 
-This is the backend for [closingdoors.nyc](https://github.com/cedarbaum/closingdoors.nyc).
-
 ## Setup
 
 This project does not setup the Transiter service itself. You will need to do this first using another AWS service, such as ECS or EKS. After this is done, make note of the VPC that the Transiter service is deployed in.
