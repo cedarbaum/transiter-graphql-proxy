@@ -2,6 +2,8 @@
 
 This project creates an AWS AppSync endpoint for communicating with the [Transiter](https://github.com/jamespfennell/transiter) service.
 
+It was previously the backend for [closingdoors.nyc](https://github.com/cedarbaum/closingdoors.nyc).
+
 It runs in AWS and is deployed using CDK.
 
 ## Setup
